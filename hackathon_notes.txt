@@ -1,0 +1,124 @@
+================================================================
+FLOODSENSE — CHALLENGE BRIEF
+Neural Nova | 48-Hour Data Drop Sprint
+"Build for a Better Tomorrow"
+================================================================
+
+THE CRISIS
+----------
+In 2022, catastrophic flooding submerged one-third of Pakistan,
+killed over 1,700 people, displaced 32 million, and caused more
+than $30 billion in economic damage.
+
+In 2025, floods returned. Over 6.9 million people were affected,
+more than 1,000 killed (275 of them children), 229,700 houses
+destroyed, and 2,811 km of roads damaged.
+
+Pakistan does not have a flooding problem. It has a WARNING problem.
+In both disasters, affected communities received less than 24 hours
+of advance warning — not enough time to evacuate safely.
+
+THE CHALLENGE
+-------------
+Build a flood risk early warning system for Pakistani districts.
+
+Your team must deliver THREE things:
+
+1. AN ML MODEL
+
+Input Features:
+Use the following features from the training data — selection and engineering is part of the challenge:
+- Rainfall: `precipitation`, `precip_3day_avg`, `precip_7day_avg`
+- Soil: `soil_moisture`, `soil_3day_avg`
+- Water extent: `water_area_km2`, `water_area_change`, `water_area_pct_change`
+- Atmospheric: `temperature`, `humidity`, `pressure`, `evaporation`
+- Temporal: `month`, `day_of_year`, `is_monsoon`
+- Flood history: `ds_idx` (read the data dictionary before using)
+- Terrain: `avg_elevation_m` from `district_elevation_reference.csv` — merge on district
+
+IMPORTANT: Do not use `elevation`, `latitude`, or `longitude` from the training data — they are constant and carry no signal.
+
+Output:
+- Primary: flood risk classification mapped from model probability
+     Low: < 25% | Medium: 25–50% | High: 50–75% | Critical: > 75%
+- Secondary: confidence score displayed as a percentage (0–100%)
+- Target column to predict: `flood_event` (0 = no flood, 1 = flood)
+
+Minimum Requirements
+- Model accuracy > 70% on a held-out test split
+- Must handle `NaN` values in `precipitation` without crashing — document your imputation strategy
+- Must handle `inf` values in `water_area_pct_change` — clip or replace before training
+- Duplicate rows must be removed before train/test split
+- Phantom rows with impossible values must be detected and excluded
+
+What Strong Models Do
+- Engineer lag features and rolling averages rather than using raw daily readings alone
+- Explain feature importance — which inputs drove a High or Critical prediction and why
+- Use ensemble methods (XGBoost, Random Forest) over single decision trees
+- Account for class imbalance (32% flood vs 68% non-flood) explicitly
+
+NOTE: A model with 78% accuracy whose team can explain every prediction is stronger than a 92% black box. Interpretability is scored.
+
+2. A USER INTERFACE
+Built with Streamlit, Gradio, or React. A non-technical district official must be able to use it with zero guidance.
+
+Inputs
+- Rainfall (mm), date, district, soil condition (Dry/Moist/Saturated), visible surface water (Yes/No)
+- Labels must be plain English — no variable names or technical terms visible to the user
+
+Output
+- Large colour-coded risk badge: Green (Low) / Yellow (Medium) / Orange (High) / Red (Critical)
+- Confidence score, estimated population at risk, and one specific recommended action per risk level
+- All risk labels in both English and Urdu simultaneously
+
+Uncertainty Handling
+- Missing inputs must prompt the user — not crash
+- Insufficient or out-of-range data must display *"Insufficient data — manual assessment recommended"* rather than forcing a classification
+
+Performance
+- Loads within 10 seconds on a slow connection
+- No heavy libraries, map tiles, or external dependencies loaded at runtime
+- Total page size under 2MB on first load
+
+Hard Rules
+- No ML jargon visible anywhere (no "model", "inference", "prediction", "feature")
+- No login or setup steps required
+- Must not break on missing or extreme input values
+
+NOTE: Judges will test the UI live — including blank fields and out-of-range values. A plain interface that handles edge cases beats a polished one that crashes.
+
+3. A 3-MINUTE IMPACT PITCH
+   - Who benefits, and by how much?
+   - How many hours of additional warning would your system have
+     provided before the August 15, 2025 Buner disaster?
+   - What happens when your model is wrong? (Defend your failure modes)
+
+JUDGING CRITERIA (100 points)
+------------------------------
+Social Impact & Innovation  30 pts  Quantified beneficiaries, novel features
+Technical Execution         30 pts  Model accuracy, feature engineering,
+                                    data handling, interpretability
+Usability / UI              20 pts  Non-technical accessibility, clarity,
+                                    low-bandwidth capability
+The Pitch                   20 pts  Failure mode defence, live demo,
+                                    quantified impact claims
+
+DATASETS PROVIDED
+-----------------
+1.floodsense_training_data.csv       Daily sensor records for Dadu, Sindh (2022-2024)
+                           Use this to train your model.
+
+2. ndma_flood_impact_2022.csv NDMA 2022 regional flood impact totals
+                           Use this for context and impact quantification.
+
+3. district_elevation_reference  Use this to incorporate real terrain elevation as a
+      predictive feature. Merge on the district column.
+
+
+* data_dictionary.txt        Column descriptions for both datasets — read
+                           this before you touch the data.
+
+================================================================
+Good luck. Build something that matters.
+================================================================
+

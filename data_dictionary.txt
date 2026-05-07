@@ -1,0 +1,109 @@
+================================================================
+FLOODSENSE — DATA DICTIONARY
+Neural Nova Hackathon | Data Drop Package
+================================================================
+
+IMPORTANT — PLEASE READ BEFORE TRAINING
+----------------------------------------
+
+
+TARGET VARIABLE: flood_event
+  0 = No flood event on this date
+  1 = Flood event recorded on this date
+  Risk level mapping: Low (<25%), Medium (25–50%),
+  High (50–75%), Critical (>75%)
+
+================================================================
+DATASET 1: FloodSense_Training_Data.csv
+================================================================
+Source    : Provided by event organisers
+Coverage  : Daily records, Dadu district, Sindh, Pakistan
+Date range: January 2022 – December 2024
+
+COLUMNS
+-------
+date               Date of the reading (DD/MM/YYYY)
+district           Administrative district label
+                   (Sindh_District, Balochistan_District, KP_District,
+                   Nowshera, Jacobabad)
+elevation          Station elevation in metres
+evaporation        Daily evapotranspiration (mm). Negative values
+                   indicate net moisture absorption.
+latitude           Station latitude
+longitude          Station longitude
+precipitation      Daily rainfall (mm). Contains missing values (NaN)
+                   for some district-date combinations.
+pressure           Atmospheric pressure (Pa)
+soil_moisture      Volumetric soil water content (0.0–1.0 scale)
+temperature        Daily mean temperature (°C)
+water_area_km2     Surface water extent (km²) derived from satellite
+wind_speed         Daily mean wind speed (m/s)
+humidity           Relative humidity (%)
+precip_3day_avg    3-day rolling average of precipitation
+precip_7day_avg    7-day rolling average of precipitation
+temp_3day_avg      3-day rolling average of temperature
+soil_3day_avg      3-day rolling average of soil moisture
+day_of_year        Day number within the year (1–365)
+month              Month number (1–12)
+year               Calendar year (2022–2024)
+is_monsoon         Binary flag: 1 = monsoon season, 0 = non-monsoon
+water_area_change  Change in water_area_km2 from the previous day (km²)
+water_area_pct_change  Percentage change in water area from previous day.
+                       Contains very large values where prior
+                       water_area_km2 was near or equal to zero.
+ds_idx             Numeric index column
+flood_event        TARGET: 0 = no flood, 1 = flood occurred
+
+
+================================================================
+DATASET 2: ndma_flood_impact_2022.csv
+================================================================
+Source   : National Disaster Management Authority (NDMA) Pakistan
+           Provided by event organisers
+Coverage : 2022 monsoon floods — regional aggregates across 7 regions
+Purpose  : Regional-level flood impact data from the 2022 disaster.
+           7 rows of regional totals.
+
+COLUMNS
+-------
+region                  Administrative region (AJ&K, Balochistan, GB,
+                        ICT, KP, Punjab, Sindh)
+total_deaths            Total deaths
+m_d                     Male deaths
+f_d                     Female deaths
+c_d                     Children deaths
+total_injured           Total injured
+m_i                     Male injured
+f_i                     Female injured
+c_i                     Children injured
+roads_damaged_km_       Roads damaged (kilometres)
+bridges_damaged         Number of bridges damaged
+total_houses_damaged    Number of houses damaged
+livestock_damaged       Number of livestock lost
+affected_population     Total population affected
+
+================================================================
+DATASET 3: district_elevation_reference.csv
+================================================================
+Source   : NASA SRTM (Shuttle Radar Topography Mission)
+Coverage : District-level average elevation for all 5 districts
+           present in FloodSense_Training_Data.csv
+
+COLUMNS
+-------
+district                District name
+avg_elevation_m         Average elevation in metres above sea level
+terrain_type            Terrain description
+
+
+
+================================================================
+CHALLENGE REMINDER
+================================================================
+The judges are not looking for the highest accuracy score.
+They are looking for the team whose tool a district official
+in Nowshera could open on a laptop with slow internet and
+actually use to make a decision that saves lives.
+
+Good luck.
+================================================================
