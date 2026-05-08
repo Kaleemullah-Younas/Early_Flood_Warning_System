@@ -1,5 +1,5 @@
 ================================================================
-FLOODSENSE — CHALLENGE BRIEF
+FLOODSENSE - CHALLENGE BRIEF
 Neural Nova | 48-Hour Data Drop Sprint
 "Build for a Better Tomorrow"
 ================================================================
@@ -16,7 +16,7 @@ destroyed, and 2,811 km of roads damaged.
 
 Pakistan does not have a flooding problem. It has a WARNING problem.
 In both disasters, affected communities received less than 24 hours
-of advance warning — not enough time to evacuate safely.
+of advance warning - not enough time to evacuate safely.
 
 THE CHALLENGE
 -------------
@@ -27,16 +27,16 @@ Your team must deliver THREE things:
 1. AN ML MODEL
 
 Input Features:
-Use the following features from the training data — selection and engineering is part of the challenge:
+Use the following features from the training data - selection and engineering is part of the challenge:
 - Rainfall: `precipitation`, `precip_3day_avg`, `precip_7day_avg`
 - Soil: `soil_moisture`, `soil_3day_avg`
 - Water extent: `water_area_km2`, `water_area_change`, `water_area_pct_change`
 - Atmospheric: `temperature`, `humidity`, `pressure`, `evaporation`
 - Temporal: `month`, `day_of_year`, `is_monsoon`
 - Flood history: `ds_idx` (read the data dictionary before using)
-- Terrain: `avg_elevation_m` from `district_elevation_reference.csv` — merge on district
+- Terrain: `avg_elevation_m` from `district_elevation_reference.csv` - merge on district
 
-IMPORTANT: Do not use `elevation`, `latitude`, or `longitude` from the training data — they are constant and carry no signal.
+IMPORTANT: Do not use `elevation`, `latitude`, or `longitude` from the training data - they are constant and carry no signal.
 
 Output:
 - Primary: flood risk classification mapped from model probability
@@ -46,14 +46,14 @@ Output:
 
 Minimum Requirements
 - Model accuracy > 70% on a held-out test split
-- Must handle `NaN` values in `precipitation` without crashing — document your imputation strategy
-- Must handle `inf` values in `water_area_pct_change` — clip or replace before training
+- Must handle `NaN` values in `precipitation` without crashing - document your imputation strategy
+- Must handle `inf` values in `water_area_pct_change` - clip or replace before training
 - Duplicate rows must be removed before train/test split
 - Phantom rows with impossible values must be detected and excluded
 
 What Strong Models Do
 - Engineer lag features and rolling averages rather than using raw daily readings alone
-- Explain feature importance — which inputs drove a High or Critical prediction and why
+- Explain feature importance - which inputs drove a High or Critical prediction and why
 - Use ensemble methods (XGBoost, Random Forest) over single decision trees
 - Account for class imbalance (32% flood vs 68% non-flood) explicitly
 
@@ -64,7 +64,7 @@ Built with Streamlit, Gradio, or React. A non-technical district official must b
 
 Inputs
 - Rainfall (mm), date, district, soil condition (Dry/Moist/Saturated), visible surface water (Yes/No)
-- Labels must be plain English — no variable names or technical terms visible to the user
+- Labels must be plain English - no variable names or technical terms visible to the user
 
 Output
 - Large colour-coded risk badge: Green (Low) / Yellow (Medium) / Orange (High) / Red (Critical)
@@ -72,8 +72,8 @@ Output
 - All risk labels in both English and Urdu simultaneously
 
 Uncertainty Handling
-- Missing inputs must prompt the user — not crash
-- Insufficient or out-of-range data must display *"Insufficient data — manual assessment recommended"* rather than forcing a classification
+- Missing inputs must prompt the user - not crash
+- Insufficient or out-of-range data must display *"Insufficient data - manual assessment recommended"* rather than forcing a classification
 
 Performance
 - Loads within 10 seconds on a slow connection
@@ -85,7 +85,7 @@ Hard Rules
 - No login or setup steps required
 - Must not break on missing or extreme input values
 
-NOTE: Judges will test the UI live — including blank fields and out-of-range values. A plain interface that handles edge cases beats a polished one that crashes.
+NOTE: Judges will test the UI live - including blank fields and out-of-range values. A plain interface that handles edge cases beats a polished one that crashes.
 
 3. A 3-MINUTE IMPACT PITCH
    - Who benefits, and by how much?
@@ -115,7 +115,7 @@ DATASETS PROVIDED
       predictive feature. Merge on the district column.
 
 
-* data_dictionary.txt        Column descriptions for both datasets — read
+* data_dictionary.txt        Column descriptions for both datasets - read
                            this before you touch the data.
 
 ================================================================

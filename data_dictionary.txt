@@ -1,9 +1,9 @@
 ================================================================
-FLOODSENSE — DATA DICTIONARY
+FLOODSENSE - DATA DICTIONARY
 Neural Nova Hackathon | Data Drop Package
 ================================================================
 
-IMPORTANT — PLEASE READ BEFORE TRAINING
+IMPORTANT - PLEASE READ BEFORE TRAINING
 ----------------------------------------
 
 
@@ -60,7 +60,7 @@ DATASET 2: ndma_flood_impact_2022.csv
 ================================================================
 Source   : National Disaster Management Authority (NDMA) Pakistan
            Provided by event organisers
-Coverage : 2022 monsoon floods — regional aggregates across 7 regions
+Coverage : 2022 monsoon floods - regional aggregates across 7 regions
 Purpose  : Regional-level flood impact data from the 2022 disaster.
            7 rows of regional totals.
 
