@@ -1,0 +1,6 @@
+team_name,institution,district,risk_level,confidence_pct,top_feature,submitted_at
+strangers,umt,Nowshera,Critical,98.4,water_area_km2,2026-05-09 12:22:56
+strangers,umt,Jacobabad,Medium,41.7,water_area_km2,2026-05-09 12:22:56
+strangers,umt,Sindh_District,Critical,99.5,water_area_km2,2026-05-09 12:22:56
+strangers,umt,KP_District,Medium,45.5,water_area_km2,2026-05-09 12:22:56
+strangers,umt,Balochistan_District,Medium,43.5,water_area_km2,2026-05-09 12:22:56
